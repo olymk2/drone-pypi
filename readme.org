@@ -2,6 +2,8 @@
 
 Drone plugin which runs python setup.py sdist upload -r pypi against the source code in your ci pipeline.
 
+Based on https://github.com/drone-plugins/drone-pypi which did not work for me at the time.
+
 Required environment variables
 
 PYPI_USERNAME=username
@@ -15,7 +17,7 @@ PYPI_REPOSITORY default to the test pypi server
     image: olymk2/drone-pypi
     environment:
       - PYPI_USERNAME=username
-      - PYPI_PASSWORD=pasword
+      - PYPI_PASSWORD=password
       - PYPI_REPOSITORY=https://upload.pypi.org/legacy/
 
 #+END_SRC
