@@ -1,0 +1,34 @@
+#+TITLE: Drone upload package to pypi 
+
+Drone plugin which runs python setup.py sdist upload -r pypi against the source code in your ci pipeline.
+
+Required environment variables
+
+PYPI_USERNAME=username
+PYPI_PASSWORD=pasword
+PYPI_REPOSITORY=https://upload.pypi.org/legacy/
+
+* Drone config file sample
+PYPI_REPOSITORY default to the test pypi server
+#+BEGIN_SRC yaml
+  publish-pypi:
+    image: olymk2/drone-pypi
+    environment:
+      - PYPI_USERNAME=username
+      - PYPI_PASSWORD=pasword
+      - PYPI_REPOSITORY=https://upload.pypi.org/legacy/
+
+#+END_SRC
+
+
+* Building locally
+
+#+BEGIN_SRC bash
+docker build -t olymk2/drone-pypi .
+#+END_SRC
+
+* Testing locally
+You can run the plugin from docker with the command below, or just run =python example.py= outside the container.
+#+BEGIN_SRC bash 
+docker run -ePYPI_USERNAME=username -ePYPI_PASSWORD=password olymk2/drone-pypi 
+#+END_SRC
