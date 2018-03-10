@@ -36,4 +36,7 @@ password:{password}
     }))
 
 # run the actual pypi upload
-subprocess.call(['python', 'setup.py', 'sdist', 'upload', '-rpypi'])
+subprocess.call(
+    ['python', 'setup.py', 'sdist', 'upload', '-rpypi'],
+    shell=True
+)
